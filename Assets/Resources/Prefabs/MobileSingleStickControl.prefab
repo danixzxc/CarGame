@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201a64e0edd9e8c46808d1f1948d1cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _joystick: {fileID: 0}
+  _joystick: {fileID: 2193868701500804246}
   _container: {fileID: 7286595519575789831}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 22400002}
   - component: {fileID: 22200002}
   - component: {fileID: 11400010}
-  - component: {fileID: 11400008}
+  - component: {fileID: 2193868701500804246}
   m_Layer: 5
   m_Name: MobileJoystick
   m_TagString: Untagged
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &11400008
+--- !u!114 &2193868701500804246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
