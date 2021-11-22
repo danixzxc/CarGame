@@ -1,13 +1,17 @@
 ﻿using Profile;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Root : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] 
     private Transform _placeForUi;
+    
+    [SerializeField] 
+    private UnityAdsTools _unityAdsTools;
 
     [SerializeField]
-    private UnityAdsTools _unityAdsTools;
+    private List<ItemConfig> _itemConfigs;
 
     private MainController _mainController;
 
@@ -15,7 +19,7 @@ public class Root : MonoBehaviour
     {
         var profilePlayer = new ProfilePlayer(15f, _unityAdsTools);
         profilePlayer.CurrentState.Value = GameState.Start;
-        _mainController = new MainController(_placeForUi, profilePlayer);
+        _mainController = new MainController(_placeForUi, profilePlayer, _itemConfigs);
     }
 
     protected void OnDestroy()

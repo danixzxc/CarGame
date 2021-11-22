@@ -1,8 +1,8 @@
-﻿public class Car //модель данных машинки, информация о ней
+﻿public class Car
 {
-    public float Speed { get;}//потом будут другие параметры: колёса, абилки, мощность двигателя и тд, то, что мы хотим изменять
+    public float Speed { get;}
 
-    public Car(float speed) //конструктор 
+    public Car(float speed)
     {
         Speed = speed;
     }

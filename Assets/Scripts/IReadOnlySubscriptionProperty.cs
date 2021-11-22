@@ -2,7 +2,7 @@
 
 namespace Tools
 {
-    public interface IReadOnlySubscriptionProperty<T>//подписываемся на изменение любого параметра:меню, скорость машинки, время суток в игре и тд, поэтому <T>
+    public interface IReadOnlySubscriptionProperty<T>
     { 
         T Value { get; }
         void SubscribeOnChange(Action<T> subscriptionAction);

@@ -12,7 +12,7 @@ public class MainMenuController : BaseController
     {
         _profilePlayer = profilePlayer;
         _view = LoadView(placeForUi);
-        _view.Init(StartGame);
+        _view.Init(StartGame, LoadInventory);
     }
     
     private MainMenuView LoadView(Transform placeForUi)
@@ -26,9 +26,17 @@ public class MainMenuController : BaseController
     private void StartGame()
     {
         _profilePlayer.CurrentState.Value = GameState.Game;
-        _profilePlayer.AnalyticTools.SendMessage("game_start", ("time", Time.realtimeSinceStartup));
-        _profilePlayer.AdsShower.ShowRewardVideo();
+        
+        _profilePlayer.AnalyticTools.SendMessage("start_game", ("time", Time.realtimeSinceStartup));
+        
+        _profilePlayer.AdsShower.ShowInterstitialVideo();
         Advertisement.AddListener(_profilePlayer.AdsListener);
+    }
+
+    private void LoadInventory()
+    {
+        _profilePlayer.CurrentState.Value = GameState.Inventory;
+        _profilePlayer.AnalyticTools.SendMessage("load_inventory");
     }
 }
 

@@ -10,10 +10,8 @@ public class GameController : BaseController
         var tapeBackgroundController = new TapeBackgroundController(leftMoveDiff, rightMoveDiff);
         AddController(tapeBackgroundController);
         
-        var inputGameController = new InputGameController(leftMoveDiff, rightMoveDiff, profilePlayer.CurrentCar);//здесь заменить на джойстик
-        //var joystickView = new InputJoystickView();
-        //AddController(joystickView);
-        //BaseInputView.Init(joystickView);
+        var inputGameController = new InputGameController(leftMoveDiff, rightMoveDiff, profilePlayer.CurrentCar);
+        AddController(inputGameController);
             
         var carController = new CarController();
         AddController(carController);

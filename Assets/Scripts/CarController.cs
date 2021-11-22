@@ -3,7 +3,7 @@
 public class CarController : BaseController
 {
     private readonly ResourcePath _viewPath = new ResourcePath {PathResource = "Prefabs/Car"};
-    private readonly CarView _carView; //на будущее, сюда присваивать будем логику вьюшки
+    private readonly CarView _carView;
 
     public CarController()
     {

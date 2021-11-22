@@ -2,23 +2,25 @@
 using Tools;
 using UnityEngine.Advertisements;
 
-public class ProfilePlayer //текущее свойство игры
+public class ProfilePlayer
 {
-    public ProfilePlayer(float speedCar, UnityAdsTools unityAdsTools)
+    public ProfilePlayer(float speedCar, UnityAdsTools adsShower)
     {
         CurrentState = new SubscriptionProperty<GameState>();
         CurrentCar = new Car(speedCar);
         AnalyticTools = new UnityAnalyticTools();
-        AdsShower = unityAdsTools;
-        AdsListener = unityAdsTools;
+        AdsShower = adsShower;
+        AdsListener = adsShower;
     }
 
     public SubscriptionProperty<GameState> CurrentState { get; }
 
     public Car CurrentCar { get; }
-
+    
     public IAnalyticTools AnalyticTools { get; }
-    public IAdsShower  AdsShower { get; }
+    
+    public IAdsShower AdsShower { get; }
+    
     public IUnityAdsListener AdsListener { get; }
 }
 

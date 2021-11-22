@@ -1,5 +1,6 @@
 ﻿public interface IAdsShower
 {
-    void ShowBaner();
+    void ShowInterstitialVideo();
+    void ShowBanner();
     void ShowRewardVideo();
 }
