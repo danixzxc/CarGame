@@ -17,7 +17,7 @@ public class MainController : BaseController
 
     private MainMenuController _mainMenuController;
     private GameController _gameController;
-    private InventoryController _inventoryController;
+    private InventoryMenuController _inventoryMenuController;
     private readonly Transform _placeForUi;
     private readonly ProfilePlayer _profilePlayer;
     private readonly List<ItemConfig> _itemsConfig;
@@ -41,14 +41,15 @@ public class MainController : BaseController
             case GameState.Game:
                 _gameController = new GameController(_profilePlayer);
 
-                _inventoryController?.HideInventory();
-                _inventoryController?.Dispose();
+                _inventoryMenuController?.Dispose();
+                _inventoryMenuController?.Dispose();
 
                 _mainMenuController?.Dispose();
                 break;
             case GameState.Inventory:
-                _inventoryController = new InventoryController(_itemsConfig);
-                _inventoryController.ShowInventory();
+                //_inventoryController = new InventoryController(_itemsConfig);
+                _inventoryMenuController = new InventoryMenuController(_placeForUi, _profilePlayer);
+               // _inventoryController.ShowInventory();
 
                 _mainMenuController?.Dispose();
                 _gameController?.Dispose();
@@ -62,7 +63,7 @@ public class MainController : BaseController
 
     private void AllClear()
     {
-        _inventoryController?.Dispose();
+        _inventoryMenuController?.Dispose();
         _mainMenuController?.Dispose();
         _gameController?.Dispose();
     }

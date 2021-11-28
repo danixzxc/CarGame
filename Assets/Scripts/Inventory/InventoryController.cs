@@ -4,10 +4,11 @@ using System.Collections.Generic;
 public class InventoryController : BaseController, IInventoryController
 {
     private readonly IInventoryModel _inventoryModel;
-    private readonly IInventoryView _inventoryView;
+    private readonly InventoryView _inventoryView;
     private readonly IItemsRepository _itemsRepository;
 
-    public Action HideAction { get; }
+    public Action HideAction { get; } //когда закрываем окно инвентаря дёргаем делегат и вызываем onChangeState
+    //пока на нём нету методов, они должны навешиваться извне, например когда нажимаем кнопку закрыть окно то вызываем метод онЧейнджСтате
 
     public InventoryController(List<ItemConfig> itemConfigs)
     {
@@ -27,7 +28,7 @@ public class InventoryController : BaseController, IInventoryController
         _inventoryView.Display(equippedItems);
     }
 
-    public void HideInventory()
+    public void HideInventory() //можно и сразу сюда перенести модельку профайл плеера и менять стейт
     {
         _inventoryView.Hide();
         HideAction?.Invoke();

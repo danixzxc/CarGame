@@ -6,6 +6,12 @@ public class ItemConfig : ScriptableObject
     [SerializeField]
     private int _id;
 
+    //[SerializeField]
+    //private ItemView _itemView;
+
+    [SerializeField]
+    private Sprite _sprite;
+
     [SerializeField]
     private string _title;
     
@@ -15,7 +21,11 @@ public class ItemConfig : ScriptableObject
     [SerializeField]
     private string _rarity;
 
-    public int Id => _id;
+    public int Id => _id; 
+    
+    public Sprite ItemSprite => _sprite;
+
+    //public ItemView ItemView => _itemView;
 
     public string Title => _title;
 

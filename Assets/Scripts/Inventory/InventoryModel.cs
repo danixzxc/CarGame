@@ -3,6 +3,7 @@
 public class InventoryModel : IInventoryModel
 {
     private readonly List<IItem> _items = new List<IItem>();
+    public readonly List<ItemConfig> _itemConfigs = new List<ItemConfig>();
 
     public IReadOnlyList<IItem> GetEquippedItems()
     {
@@ -16,6 +17,11 @@ public class InventoryModel : IInventoryModel
 
         _items.Add(item);
     }
+    public void EquipItem(ItemConfig item)
+    {
+        _itemConfigs.Add(item);
+    }
+    
 
     public void UnEquipItem(IItem item)
     {

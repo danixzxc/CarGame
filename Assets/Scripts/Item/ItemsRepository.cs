@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class ItemsRepository : BaseController, IItemsRepository
 {
@@ -32,7 +33,9 @@ public class ItemsRepository : BaseController, IItemsRepository
         return new Item 
         { 
             Id = itemConfig.Id, 
-            Info = new ItemInfo { Title = itemConfig.Title } 
+            Info = new ItemInfo { Title = itemConfig.Title },
+            Sprite = itemConfig.ItemSprite
+
         };
     }
 }
