@@ -1,25 +1,32 @@
 ﻿using Profile;
-using System.Collections.Generic;
+using Profile.Analytic;
 using UnityEngine;
 
 public class Root : MonoBehaviour
 {
     [SerializeField] 
     private Transform _placeForUi;
-    
-    [SerializeField] 
-    private UnityAdsTools _unityAdsTools;
 
     [SerializeField]
-    private List<ItemConfig> _itemConfigs;
+    private FightWindowView _fightWindowView;
+
+    [SerializeField]
+    private StartFightView _startFightView;
+
+    [SerializeField]
+    private DailyRewardView _dailyRewardView;
+
+    [SerializeField]
+    private CurrencyView _currencyView;
 
     private MainController _mainController;
 
     private void Awake()
     {
-        var profilePlayer = new ProfilePlayer(15f, _unityAdsTools);
+        ProfilePlayer profilePlayer = new ProfilePlayer(15f, new UnityAnalyticTools());
         profilePlayer.CurrentState.Value = GameState.Start;
-        _mainController = new MainController(_placeForUi, profilePlayer, _itemConfigs);
+        _mainController = new MainController(_placeForUi, profilePlayer, _fightWindowView, 
+            _startFightView, _dailyRewardView, _currencyView);
     }
 
     protected void OnDestroy()

@@ -1,15 +1,20 @@
-﻿using Profile;
-using System.Collections.Generic;
+﻿using Game;
+using Profile;
+using Ui;
 using UnityEngine;
 
 public class MainController : BaseController
 {
     public MainController(Transform placeForUi, ProfilePlayer profilePlayer, 
-        List<ItemConfig> itemsConfig)
+        FightWindowView fightWindowView, StartFightView startFightView,
+        DailyRewardView dailyRewardView, CurrencyView currencyView)
     {
         _profilePlayer = profilePlayer;
         _placeForUi = placeForUi;
-        _itemsConfig = itemsConfig;
+        _fightWindowView = fightWindowView;
+        _startFightView = startFightView;
+        _dailyRewardView = dailyRewardView;
+        _currencyView = currencyView;
 
         OnChangeGameState(_profilePlayer.CurrentState.Value);
         profilePlayer.CurrentState.SubscribeOnChange(OnChangeGameState);
@@ -17,14 +22,20 @@ public class MainController : BaseController
 
     private MainMenuController _mainMenuController;
     private GameController _gameController;
-    private InventoryMenuController _inventoryMenuController;
+    private DailyRewardController _dailyRewardController;
+    private FightWindowController _fightWindowController;
+    private StartFightController _startFightController;
+
     private readonly Transform _placeForUi;
     private readonly ProfilePlayer _profilePlayer;
-    private readonly List<ItemConfig> _itemsConfig;
+    private readonly FightWindowView _fightWindowView;
+    private readonly StartFightView _startFightView;
+    private readonly DailyRewardView _dailyRewardView;
+    private readonly CurrencyView _currencyView;
 
     protected override void OnDispose()
     {
-        AllClear();
+        ClearAll();
 
         _profilePlayer.CurrentState.UnSubscriptionOnChange(OnChangeGameState);
         base.OnDispose();
@@ -36,35 +47,55 @@ public class MainController : BaseController
         {
             case GameState.Start:
                 _mainMenuController = new MainMenuController(_placeForUi, _profilePlayer);
+
                 _gameController?.Dispose();
+                _dailyRewardController?.Dispose();
                 break;
+
+            case GameState.DailyReward:
+                _dailyRewardController = new DailyRewardController(_placeForUi, _profilePlayer, _dailyRewardView, _currencyView);
+                _dailyRewardController.RefreshView();
+
+                _mainMenuController?.Dispose();
+                break;
+
+            case GameState.WeeklyReward:
+                _dailyRewardController = new DailyRewardController(_placeForUi, _profilePlayer, _dailyRewardView, _currencyView);
+                _dailyRewardController.RefreshView();
+
+                _mainMenuController?.Dispose();
+                break;
+
+            case GameState.Fight:
+                _fightWindowController = new FightWindowController(_placeForUi, _fightWindowView, _profilePlayer);
+                _fightWindowController.RefreshView();
+
+                _mainMenuController?.Dispose();
+                _gameController?.Dispose();
+                _startFightController?.Dispose();
+                break;
+
             case GameState.Game:
-                _gameController = new GameController(_profilePlayer);
-
-                _inventoryMenuController?.Dispose();
-                _inventoryMenuController?.Dispose();
-
-                _mainMenuController?.Dispose();
-                break;
-            case GameState.Inventory:
-                //_inventoryController = new InventoryController(_itemsConfig);
-                _inventoryMenuController = new InventoryMenuController(_placeForUi, _profilePlayer);
-               // _inventoryController.ShowInventory();
+                _gameController = new GameController(_placeForUi, _profilePlayer);
+                _startFightController = new StartFightController(_placeForUi, _profilePlayer, _startFightView);
+                _startFightController.RefreshView();
 
                 _mainMenuController?.Dispose();
-                _gameController?.Dispose();
-
+                _fightWindowController?.Dispose();
                 break;
+
             default:
-                AllClear();
+                ClearAll();
                 break;
         }
     }
 
-    private void AllClear()
+    private void ClearAll()
     {
-        _inventoryMenuController?.Dispose();
         _mainMenuController?.Dispose();
         _gameController?.Dispose();
+        _dailyRewardController?.Dispose();
+        _fightWindowController?.Dispose();
+        _startFightController?.Dispose();
     }
 }

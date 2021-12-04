@@ -318,7 +318,6 @@ GameObject:
   - component: {fileID: 1980575207}
   - component: {fileID: 1980575206}
   - component: {fileID: 1980575210}
-  - component: {fileID: 1980575211}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -382,7 +381,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -419,19 +418,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _placeForUi: {fileID: 1903552}
-  _unityAdsTools: {fileID: 1980575211}
-  _itemConfigs:
-  - {fileID: 11400000, guid: de729d0e456a1184ebe59c595784ae54, type: 2}
-  - {fileID: 11400000, guid: 0c5580639060c894899a8e4e57c3731b, type: 2}
---- !u!114 &1980575211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980575205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af148d894c75144bbe436d72350b115, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _fightWindowView: {fileID: 2108483335696336335, guid: ef290bdb62919be43b2c5cb327857e89,
+    type: 3}
+  _startFightView: {fileID: 4161682023641719770, guid: a37bac9d30ec4ff479870aab33c782f0,
+    type: 3}
+  _dailyRewardView: {fileID: 2391394340731010656, guid: 3da3c71f6c5c2304da45a3fece8f039f,
+    type: 3}
+  _currencyView: {fileID: 674168989527842579, guid: 651682e397e7acd45800b7c42dc89b60,
+    type: 3}
