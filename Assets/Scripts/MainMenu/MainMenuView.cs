@@ -31,7 +31,6 @@ namespace Ui
             _buttonStart.onClick.RemoveAllListeners();
             _buttonExit.onClick.RemoveAllListeners();
             _buttonDailyReward.onClick.RemoveAllListeners();
-            _buttonWeeklyReward.onClick.RemoveAllListeners();
         }
 
         private void Exit()

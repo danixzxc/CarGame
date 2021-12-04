@@ -17,6 +17,7 @@ public class DailyRewardController : BaseController
         DailyRewardView generateLevelView, CurrencyView currencyView)
     {
         _profilePlayer = profilePlayer;
+
         _dailyRewardView = UnityEngine.Object.Instantiate(generateLevelView, placeForUi);
         AddGameObjects(_dailyRewardView.gameObject);
 
@@ -93,7 +94,7 @@ public class DailyRewardController : BaseController
                 var nextClaimTime = _dailyRewardView.TimeGetReward.Value.AddSeconds(_dailyRewardView.TimeCooldown);
                 var currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
                 var timeGetReward = $"{currentClaimCooldown.Days:D2}:{currentClaimCooldown.Hours:D2}:{currentClaimCooldown.Minutes:D2}:{currentClaimCooldown.Seconds:D2}";
-      
+                _dailyRewardView.ProgressBar.fillAmount = (7 - float.Parse($"{currentClaimCooldown.Days:D2}"))/ 7;
                 _dailyRewardView.TimerNewReward.text = $"Time to get the next reward: {timeGetReward}";
             }
         }
