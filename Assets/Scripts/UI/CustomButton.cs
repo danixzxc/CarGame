@@ -49,6 +49,9 @@ public class CustomButton : Button
             case AnimationButtonType.ChangePosition:
                 _rectTransform.DOShakeAnchorPos(_duration, Vector2.one * _strength).SetEase(_curveEase);
                 break;
+            case AnimationButtonType.Jump:
+                _rectTransform.DOJumpAnchorPos(Vector2.up + _rectTransform.anchoredPosition, _strength, 1, _duration, false);
+                break;
         }
     }
 }

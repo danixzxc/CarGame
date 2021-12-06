@@ -770,7 +770,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _animationButtonType: 2
-  _curveEase: 1
+  _curveEase: 34
   _duration: 0.6
 --- !u!1 &2391394342125767796
 GameObject:
@@ -1121,8 +1121,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  _animationButtonType: 2
-  _curveEase: 1
+  _animationButtonType: 1
+  _curveEase: 6
   _duration: 0.6
 --- !u!1 &6774264168074374862
 GameObject:
