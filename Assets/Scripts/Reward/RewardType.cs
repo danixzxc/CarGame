@@ -1,5 +1,6 @@
 ﻿public enum RewardType
 {
     Wood,
-    Diamond
+    Diamond,
+    Coin
 }

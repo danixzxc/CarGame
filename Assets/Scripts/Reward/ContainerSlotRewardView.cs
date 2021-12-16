@@ -18,7 +18,7 @@ public class ContainerSlotRewardView : MonoBehaviour
 
     public void SetData(Reward reward, int countDay, bool isSelect)
     {
-        _iconCurrency.sprite = reward.IconCurrency;
+       // _iconCurrency.sprite = reward.SpriteImage.sprite;
         _textDays.text = $"Day {countDay}";
         _countReward.text = reward.CountCurrency.ToString();
         _selectBackground.gameObject.SetActive(isSelect);

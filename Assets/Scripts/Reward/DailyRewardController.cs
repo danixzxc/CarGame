@@ -10,6 +10,7 @@ public class DailyRewardController : BaseController
     private List<ContainerSlotRewardView> _slots;
     private CurrencyController _currencyController;
     private ProfilePlayer _profilePlayer;
+    private AssetBundleViewBase _assetBundleViewBase;
 
     private bool _isGetReward;
 
@@ -108,6 +109,7 @@ public class DailyRewardController : BaseController
         _dailyRewardView.GetRewardButton.onClick.AddListener(ClaimReward);
         _dailyRewardView.ResetButton.onClick.AddListener(ResetTimer);
         _dailyRewardView.CloseButton.onClick.AddListener(CloseWindow);
+        _dailyRewardView.LoadAssetsButton.onClick.AddListener(LoadAssets);
     }
 
     private void ClaimReward()
@@ -144,11 +146,18 @@ public class DailyRewardController : BaseController
         _profilePlayer.CurrentState.Value = GameState.Start;
     }
 
+    private void LoadAssets()
+    {
+        _dailyRewardView.LoadAssetsButton.interactable = false;
+        _dailyRewardView.LoadAssetsButton.StartCoroutine(_assetBundleViewBase.DownloadAndSetAssetBundle());
+    }
+
     protected override void OnDispose()
     {
         _dailyRewardView.GetRewardButton.onClick.RemoveAllListeners();
         _dailyRewardView.ResetButton.onClick.RemoveAllListeners();
         _dailyRewardView.CloseButton.onClick.RemoveAllListeners();
+        _dailyRewardView.LoadAssetsButton.onClick.RemoveAllListeners();
 
         base.OnDispose();
     }

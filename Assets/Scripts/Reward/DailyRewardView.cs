@@ -8,7 +8,10 @@ public class DailyRewardView : MonoBehaviour
 {
     private const string CurrentSlotInActiveKey = nameof(CurrentSlotInActiveKey);
     private const string TimeGetRewardKey = nameof(TimeGetRewardKey);
-  
+
+    private const string UrlAssetBundleSprites = "https://drive.google.com/uc?export=download&id=1xGslK2RytK7OS8fW59_J50O0cXk19-mb";
+
+
     [Header("Settings Time Get Reward")]
     [SerializeField]
     private float _timeCooldown = 604800;
@@ -32,7 +35,10 @@ public class DailyRewardView : MonoBehaviour
   
     [SerializeField]
     private Button _getRewardButton;
-  
+
+    [SerializeField]
+    private Button _loadAssetsButton;
+
     [SerializeField]
     private Button _resetButton;
 
@@ -59,6 +65,9 @@ public class DailyRewardView : MonoBehaviour
     public Button ResetButton => _resetButton;
 
     public Button CloseButton => _closeButton;
+
+    public Button LoadAssetsButton => _loadAssetsButton;
+
 
     public Image ProgressBar => _progressBar;
 
